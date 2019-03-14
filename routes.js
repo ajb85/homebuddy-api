@@ -64,6 +64,7 @@ router.post("/properties", validate, async (req, res, next) => {
         try {
           const zestimate = await estimate(property);
           property.zestimate = parseInt(zestimate.replace("$", ""), 10);
+          property.certainty = (Math.random() * property.zestimate) / 10;
         } catch (e) {
           console.log(e);
         }
