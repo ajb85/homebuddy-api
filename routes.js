@@ -55,6 +55,15 @@ router.post("/properties/add", validate, async (req, res, next) => {
   }
 });
 
+router.post("/properties/delete", validate, async (req, res, next) => {
+  try {
+    await user.deleteProperty(req.user, req.body.id);
+    res.json({ status: "ok" });
+  } catch (e) {
+    next(e);
+  }
+});
+
 router.post("/properties", validate, async (req, res, next) => {
   try {
     let properties = await user.getAllProperties(req.user);

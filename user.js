@@ -114,6 +114,14 @@ module.exports = {
     return ret.lastID;
   },
 
+  deleteProperty: async (userID, propertyID) => {
+    const db = await dbPromise;
+    await db.run(sql`
+      DELETE FROM user_properties
+        WHERE user = ${userID}
+        AND property = ${propertyID}`);
+  },
+
   updateWidgets: async (userID, widgets) => {
     const db = await dbPromise;
     const widgetString = widgets.join("|");
