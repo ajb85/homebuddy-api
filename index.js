@@ -1,6 +1,7 @@
 const express = require("express");
 const Promise = require("bluebird");
 const { json, urlencoded } = require("body-parser");
+const cors = require("cors");
 
 global.Promise = Promise;
 
@@ -12,6 +13,7 @@ const port = process.env.PORT || 3000;
 app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(require("./routes.js"));
+app.use(cors());
 
 Promise.resolve(db).then(() => {
   console.log("Now listening on", port);
