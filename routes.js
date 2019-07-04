@@ -5,7 +5,7 @@ const user = require("./user.js");
 const validate = require("./validate.js");
 const estimate = require("./price-estimator.js");
 
-router.get("/", async (req, res) => {
+router.get("/", async (_, res) => {
   res.send("I am alive");
 });
 
