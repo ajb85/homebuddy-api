@@ -81,7 +81,8 @@ module.exports = {
       yearAssessed,
       type,
       onMarket,
-      mode
+      mode,
+      zestimate
     )
     VALUES (
       ${property.address},
@@ -100,7 +101,8 @@ module.exports = {
       ${property.yearAssessed},
       ${property.type},
       ${property.onMarket},
-      ${property.mode}
+      ${property.mode},
+      ${property.zestimate}
     )`);
 
     if (ret.lastID) {

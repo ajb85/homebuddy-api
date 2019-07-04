@@ -68,19 +68,19 @@ router.post("/properties", validate, async (req, res, next) => {
   try {
     let properties = await user.getAllProperties(req.user);
 
-    properties = await Promise.all(
-      properties.map(async property => {
-        try {
-          const zestimate = await estimate(property);
-          property.zestimate = parseInt(zestimate.replace("$", ""), 10);
-          property.certainty = (Math.random() * property.zestimate) / 10;
-        } catch (e) {
-          console.log(e);
-        }
+    // properties = await Promise.all(
+    //   properties.map(async property => {
+    //     try {
+    //       const zestimate = await estimate(property);
+    //       property.zestimate = parseInt(zestimate.replace("$", ""), 10);
+    //       property.certainty = (Math.random() * property.zestimate) / 10;
+    //     } catch (e) {
+    //       console.log(e);
+    //     }
 
-        return property;
-      })
-    );
+    //     return property;
+    //   })
+    // );
     res.json(properties);
   } catch (e) {
     next(e);
